@@ -78,15 +78,15 @@ footer .tag{font-family:'JBMono',monospace;font-size:11px;color:var(--muted-2);}
 
   <section class="formwrap"><div class="wrap">
     <div class="card">
-      <form action="https://formsubmit.co/david@tracksmartracing.com" method="POST">
+      <form action="https://api.web3forms.com/submit" method="POST">
 
-        <!-- FormSubmit settings -->
-        <input type="hidden" name="_subject" value="New TrackSmart Race Card order">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="hidden" name="_next" value="https://www.tracksmartracing.com">
-        <!-- honeypot: leave empty -->
-        <input type="text" name="_honey" style="display:none">
+        <!-- Web3Forms settings -->
+        <input type="hidden" name="access_key" value="4585f55d-4763-4b8d-90ea-77f62c496464">
+        <input type="hidden" name="subject" value="New TrackSmart Race Card order">
+        <input type="hidden" name="from_name" value="TrackSmart AI Order Form">
+        <input type="hidden" name="redirect" value="https://www.tracksmartracing.com">
+        <!-- honeypot: leave unchecked -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="field">
           <label for="country">Country / Jurisdiction <span class="req">*</span></label>
