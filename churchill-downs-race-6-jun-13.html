@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackSmart AI · Churchill Downs Race 6 — Jun 13, 2026</title>
+<meta name="description" content="TrackSmart AI pre-race analysis — Churchill Downs Race 6, Maiden $120k, 5 furlongs. TPN rankings, pace projection, and overlay audit for a high-chaos juvenile sprint.">
+<meta property="og:title" content="TrackSmart AI · Churchill Downs Race 6">
+<meta property="og:description" content="Maiden $120k · 5f · High Chaos / Meltdown. Full TPN rankings, pace map, and overlay plays.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2313261c' stroke='%23C49A3F' stroke-width='2'/%3E%3Cpath d='M16 1 A15 15 0 0 1 16 31 Z' fill='%23823131'/%3E%3Cpath d='M16 1 A15 15 0 0 0 16 31 Z' fill='%23C49A3F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700;6..96,900&family=Spline+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt:#13261c;--felt-2:#0e1d15;--paper:#F3EFE3;--paper-2:#EAE4D3;
+    --ink:#1c2620;--ink-soft:#566057;
+    --brass:#C49A3F;--brass-deep:#9a7526;
+    --win:#2E6B4A;--win-soft:#5E9070;--oxblood:#823131;
+    --line:rgba(196,154,63,.28);--line-paper:rgba(28,38,32,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--felt);color:var(--paper);
+    font-family:"Spline Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  .display{font-family:"Bodoni Moda",Georgia,serif;line-height:1.04;letter-spacing:-.01em}
+  .mono{font-family:"Spline Sans Mono",monospace;font-feature-settings:"tnum" 1}
+  .eyebrow{font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.32em;font-size:.66rem;font-weight:500}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--felt-2),var(--felt))}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:13px}
+  .silk{width:34px;height:34px;border-radius:50%;flex:0 0 auto;position:relative;overflow:hidden;border:1.5px solid var(--brass);box-shadow:0 0 0 3px rgba(196,154,63,.12)}
+  .silk::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--oxblood) 0 50%,var(--brass) 50% 100%)}
+  .silk::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 6px,rgba(255,255,255,.10) 6px 12px)}
+  .brand b{font-weight:700;letter-spacing:.02em;font-size:1.02rem}
+  .brand span{display:block;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);font-family:"Spline Sans Mono",monospace}
+  .topbar .meta{font-family:"Spline Sans Mono",monospace;font-size:.74rem;color:var(--win-soft);text-align:right}
+
+  /* hero */
+  .hero{padding:58px 0 46px}
+  .hero .eyebrow{color:var(--brass)}
+  .hero h1{margin:16px 0 0;font-weight:500;font-size:clamp(2.1rem,5vw,3.6rem)}
+  .hero .cond{margin-top:18px;font-family:"Spline Sans Mono",monospace;font-size:.82rem;letter-spacing:.04em;color:#cdd6cd;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .hero .cond .dot{color:var(--brass)}
+  .chaos{display:inline-flex;align-items:center;gap:9px;margin-top:24px;background:rgba(130,49,49,.22);
+    border:1px solid rgba(196,154,63,.4);border-radius:999px;padding:9px 18px;
+    font-family:"Spline Sans Mono",monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#f0d9a0}
+  .chaos b{color:var(--oxblood);background:#f0d9a0;border-radius:4px;padding:1px 7px;font-weight:700;letter-spacing:.02em}
+
+  /* pace strip */
+  .pace{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--felt-2)}
+  .pace div{padding:20px 18px;border-right:1px solid var(--line)}
+  .pace div:last-child{border-right:0}
+  .pace .v{font-family:"Bodoni Moda",serif;font-size:2rem;font-weight:500;line-height:1}
+  .pace .k{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--win-soft);margin-top:9px}
+
+  /* paper */
+  .body{background:var(--paper);color:var(--ink)}
+  .body .eyebrow{color:var(--brass-deep)}
+  section{padding:56px 0}
+  section + section{border-top:1px solid var(--line-paper)}
+  h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.1;margin:12px 0 6px}
+  .sec-intro{color:var(--ink-soft);max-width:680px;font-size:1.0rem}
+  .flow{font-size:1.08rem;line-height:1.7;max-width:760px;color:#33403a;margin-top:8px}
+  .flow .hl{background:rgba(196,154,63,.22);padding:1px 5px;border-radius:4px;font-weight:600;color:var(--ink)}
+
+  /* leaderboard */
+  .board{margin-top:30px;display:flex;flex-direction:column;gap:8px}
+  .row{background:#fff;border:1px solid var(--line-paper);border-radius:10px;padding:14px 18px;
+    display:grid;grid-template-columns:34px 44px 1fr 150px 64px;gap:16px;align-items:center}
+  .row.top{border-color:var(--brass);box-shadow:0 0 0 1px var(--brass)}
+  .rank{font-family:"Bodoni Moda",serif;font-size:1.5rem;color:var(--ink-soft);text-align:center;line-height:1}
+  .row.top .rank{color:var(--brass-deep)}
+  .saddle{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:1.1rem;border:1px solid rgba(0,0,0,.12)}
+  .horse .nm{font-family:"Bodoni Moda",serif;font-size:1.22rem;font-weight:500;line-height:1.15}
+  .horse .rat{font-size:.85rem;color:var(--ink-soft);margin-top:2px}
+  .tpn{display:flex;flex-direction:column;gap:5px}
+  .tpn .top-line{display:flex;justify-content:space-between;align-items:baseline;font-family:"Spline Sans Mono",monospace;font-size:.72rem;color:var(--ink-soft)}
+  .tpn .num{font-size:1.0rem;font-weight:600;color:var(--ink)}
+  .tpnbar{height:7px;background:var(--paper-2);border-radius:4px;overflow:hidden}
+  .tpnbar i{display:block;height:100%;background:var(--win);border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .row.top .tpnbar i{background:var(--brass)}
+  .meta-col{text-align:right}
+  .ml{font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:1.0rem;color:var(--ink)}
+  .tag{display:inline-block;font-family:"Spline Sans Mono",monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-top:5px;font-weight:500}
+  .tag.t-top{background:var(--brass);color:#2a200a}
+  .tag.t-over{background:rgba(46,107,74,.16);color:var(--win)}
+  .tag.t-chaos{background:rgba(130,49,49,.14);color:var(--oxblood)}
+  .tag.t-watch{background:rgba(86,96,87,.14);color:var(--ink-soft)}
+  .tag.t-con{background:rgba(154,117,38,.14);color:var(--brass-deep)}
+  .tag.t-fringe{background:rgba(86,96,87,.1);color:var(--ink-soft)}
+
+  /* contender detail cards */
+  .cards{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .hcard{background:#fff;border:1px solid var(--line-paper);border-radius:12px;padding:22px;border-top:3px solid var(--brass)}
+  .hcard .hh{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .hcard .hh .saddle{width:38px;height:38px;font-size:1rem}
+  .hcard .hh .nm{font-family:"Bodoni Moda",serif;font-size:1.35rem;font-weight:500;line-height:1.1}
+  .hcard .hh .od{margin-left:auto;text-align:right;font-family:"Spline Sans Mono",monospace}
+  .hcard .hh .od b{font-size:1.05rem;display:block}
+  .hcard .hh .od span{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .field{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.9rem;margin-top:4px}
+  .field dt{font-family:"Spline Sans Mono",monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding-top:3px}
+  .field dd{color:var(--ink)}
+  .angles{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+  .angle{font-family:"Spline Sans Mono",monospace;font-size:.66rem;background:var(--paper-2);color:var(--ink);padding:3px 9px;border-radius:6px}
+  .tpncalc{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-paper);font-family:"Spline Sans Mono",monospace;font-size:.78rem;color:var(--ink-soft)}
+  .tpncalc b{color:var(--ink)}
+
+  /* plays */
+  .plays{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .play{background:#fff;border:1px solid var(--line-paper);border-radius:10px;padding:20px;border-left:4px solid var(--brass)}
+  .play.power{border-left-color:var(--brass)}
+  .play.speed{border-left-color:var(--win)}
+  .play.value{border-left-color:var(--brass-deep)}
+  .play.fade{border-left-color:var(--oxblood)}
+  .play .lbl{font-family:"Spline Sans Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .play .who{font-family:"Bodoni Moda",serif;font-size:1.25rem;font-weight:500;margin:5px 0 7px}
+  .play p{font-size:.95rem;color:var(--ink-soft)}
+
+  /* overlay audit (on felt) */
+  .audit{background:var(--felt);color:var(--paper)}
+  .audit .eyebrow{color:var(--brass)}
+  .audit h2{color:var(--paper)}
+  .auditgrid{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .acard{background:var(--felt-2);border:1px solid var(--line);border-radius:10px;padding:20px}
+  .acard .at{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+  .acard .ah{font-family:"Bodoni Moda",serif;font-size:1.3rem;font-weight:500;margin:6px 0 8px}
+  .acard p{font-size:.9rem;color:#bcc7bd}
+  .call{margin-top:28px;background:rgba(196,154,63,.1);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+  .call .lbl{font-family:"Spline Sans Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+  .call p{margin-top:8px;font-size:1.08rem;color:var(--paper)}
+  .call strong{color:var(--brass)}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 46px;font-family:"Spline Sans Mono",monospace;font-size:.7rem;color:var(--win-soft);line-height:1.7}
+  footer .disc{max-width:640px;margin-bottom:12px}
+  footer .ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--brass);text-decoration:none}
+
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+  @media(max-width:760px){
+    .pace{grid-template-columns:repeat(2,1fr)}
+    .pace div:nth-child(2){border-right:0}
+    .cards,.plays,.auditgrid{grid-template-columns:1fr}
+    .row{grid-template-columns:28px 38px 1fr;gap:12px;row-gap:12px}
+    .row .tpn{grid-column:2 / -1}
+    .row .meta-col{grid-column:1 / -1;text-align:left;display:flex;align-items:center;gap:12px}
+  }
+  @media(prefers-reduced-motion:reduce){.tpnbar i{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <div class="silk" aria-hidden="true"></div>
+      <div><b>TrackSmart&nbsp;AI</b><span>Thinks Like a Handicapper</span></div>
+    </div>
+    <div class="meta">Pre-Race Analysis · v7.0<br>Engine: BRIS Flagship</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap hero">
+  <p class="eyebrow">Churchill Downs · Race 6</p>
+  <h1 class="display">Maiden $120K · 5 Furlongs</h1>
+  <div class="cond">
+    <span>Sat, Jun 13 2026</span><span class="dot">•</span>
+    <span>Dirt / Fast</span><span class="dot">•</span>
+    <span>2YO Juveniles</span><span class="dot">•</span>
+    <span>10 Starters</span>
+  </div>
+  <div class="chaos"><b>Pace Alert</b> High Chaos / Meltdown Potential</div>
+
+  <div class="pace">
+    <div><div class="v">:22.2</div><div class="k">Proj. Quarter</div></div>
+    <div><div class="v">:45.4</div><div class="k">Proj. Half</div></div>
+    <div><div class="v">:58.2</div><div class="k">Proj. Final</div></div>
+    <div><div class="v">16%</div><div class="k">Favorites Win Rate</div></div>
+  </div>
+</div>
+
+<!-- PAPER BODY -->
+<div class="body">
+
+  <!-- RACE FLOW -->
+  <section class="wrap">
+    <p class="eyebrow">The Shape</p>
+    <h2>Race flow &amp; trip projection</h2>
+    <p class="flow">A high-octane, highly volatile juvenile sprint stacked with First-Time Starters bred for pure early speed — Corniche, Epicenter, and Flightline lines throughout. Track stats confirm a true "High Chaos" profile, with favorites winning just 16% here. The outside half of the gate holds the heaviest pedigree, all but guaranteeing a fierce rush to cross over and grab the lead, which sets up a destructive pace duel among the debut runners. <span class="hl">#9 Smoke is the lone experienced horse with high tactical speed and the field's best Late Pace (TSLP)</span> — projecting a perfect Catbird trip, sitting just off the front-runners as they burn each other out.</p>
+  </section>
+
+  <!-- RANKINGS -->
+  <section class="wrap">
+    <p class="eyebrow">Section 6 · The Numbers</p>
+    <h2>Final TPN rankings</h2>
+    <p class="sec-intro">All ten starters ranked by Normalized TrackSmart Power Number. The bar shows relative TPN strength across the field.</p>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- TOP CONTENDERS DETAIL -->
+  <section class="wrap">
+    <p class="eyebrow">Section 4 · The Contenders</p>
+    <h2>Top four, in detail</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <!-- THE PLAY -->
+  <section class="wrap">
+    <p class="eyebrow">Contender Rundown</p>
+    <h2>How to play it</h2>
+    <div class="plays">
+      <div class="play power">
+        <div class="lbl">The Power Play</div>
+        <div class="who">#7 Epic Fashionista</div>
+        <p>Clear-air draw and an elite pedigree/auction combination — the $450k bullet of the field.</p>
+      </div>
+      <div class="play speed">
+        <div class="lbl">The Speed Angle</div>
+        <div class="who">#6 Peace Mission</div>
+        <p>Uncapped debut speed from the Corniche line, sitting perfectly drawn on the outside.</p>
+      </div>
+      <div class="play value">
+        <div class="lbl">The Value Play</div>
+        <div class="who">#9 Smoke</div>
+        <p>Proven experience, adding Blinkers — maps to sweep past the exhausting first-timer duel.</p>
+      </div>
+      <div class="play fade">
+        <div class="lbl">The Fade</div>
+        <div class="who">#5 Smidgeon</div>
+        <p>Overbet at 9/2. Trainer educates debuts rather than pushing for the wire, and the inside draw hurts.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- OVERLAY AUDIT (FELT) -->
+<div class="audit">
+  <section class="wrap">
+    <p class="eyebrow">Section 7</p>
+    <h2>Overlay Gatekeeper Audit</h2>
+    <div class="auditgrid">
+      <div class="acard">
+        <div class="at">⚡ Live Overlay</div>
+        <div class="ah">#6 Peace Mission · 8/1</div>
+        <p>Absolute must-use. TPN is essentially tied for the top spot, offering tremendous value over the 5/2 favorite on pedigree mapping and clear-air mechanics alone.</p>
+      </div>
+      <div class="acard">
+        <div class="at">💣 Chaos Play</div>
+        <div class="ah">#9 Smoke · 8/1</div>
+        <p>Fits the Meltdown Hunter profile perfectly. As the first-timers burn each other out, Smoke has the exposed early pace to stay in contact and the late kick to run by — now with blinkers.</p>
+      </div>
+      <div class="acard">
+        <div class="at">👀 Watch Overlay</div>
+        <div class="ah">#2 That's the Girl · 20/1</div>
+        <p>Deep exotics flyer. Takes a hit for the rail draw, but the $300k OBS purchase by Yaupon has real underlying talent.</p>
+      </div>
+    </div>
+
+    <div class="call">
+      <div class="lbl">AI Call</div>
+      <p>Expect <strong>Epic Fashionista</strong> to prove best on raw talent, with <strong>Peace Mission</strong> a massive danger and exacta threat. Watch for <strong>Smoke</strong> to pick up the pieces if the early fractions go completely nuclear.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <div class="disc">TrackSmart AI is an analytical handicapping tool. Projections and rankings are model-generated for informational purposes and do not guarantee results. Past performance is not indicative of future outcomes.</div>
+      <div class="ft">
+        <span>TrackSmart AI · The Only AI That Thinks Like a Handicapper</span>
+        <span><a href="https://www.tracksmartracing.com">tracksmartracing.com</a></span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // saddle cloth colors (North American standard)
+  const silks = {
+    1:["#C8102E","#fff"], 2:["#FFFFFF","#111"], 3:["#0B5FA5","#fff"], 4:["#FFD400","#111"],
+    5:["#1E7A45","#fff"], 6:["#1a1a1a","#fff"], 7:["#FF6A13","#111"], 8:["#F48FB1","#3a1020"],
+    9:["#17B8BE","#06363a"], 10:["#6A2C8F","#fff"], 11:["#9aa0a6","#111"], 12:["#9ccc3a","#111"]
+  };
+  function saddle(n){const c=silks[n]||["#9aa0a6","#111"];
+    return `<div class="saddle" style="background:${c[0]};color:${c[1]}">${n}</div>`;}
+
+  // full field, ranked by Normalized TPN
+  const field = [
+    {r:1,n:7,nm:"Epic Fashionista",tpn:100,ml:"5/2",tier:"Top Pick",tag:"t-top",rat:"$450k OBS bullet with a clear-air outside draw."},
+    {r:2,n:6,nm:"Peace Mission",tpn:99,ml:"8/1",tier:"Live Overlay",tag:"t-over",rat:"Elite dam production & Corniche pedigree."},
+    {r:3,n:8,nm:"House Boat Party",tpn:95,ml:"4/1",tier:"Contender",tag:"t-con",rat:"Flightline debuter with aggressive gate works."},
+    {r:4,n:9,nm:"Smoke",tpn:95,ml:"8/1",tier:"Chaos Play",tag:"t-chaos",rat:"Chaos beneficiary — Blinkers On & TSLP edge."},
+    {r:5,n:3,nm:"Energy Flows",tpn:94,ml:"10/1",tier:"Contender",tag:"t-con",rat:"Micro-stat intent, but pace dynamics are tough."},
+    {r:6,n:10,nm:"Rumbelievable",tpn:92,ml:"6/1",tier:"Contender",tag:"t-con",rat:"Stamina base & clear air; lacks premium sire flags."},
+    {r:7,n:2,nm:"That's the Girl",tpn:86,ml:"20/1",tier:"Watch",tag:"t-watch",rat:"Tier-2 sire + $300k OBS, but inside rail trap."},
+    {r:8,n:4,nm:"Ai Magic",tpn:85,ml:"12/1",tier:"Fringe",tag:"t-fringe",rat:"Dam threw 3 winners, but inside post & no 5f base."},
+    {r:9,n:1,nm:"Princess Chanty",tpn:82,ml:"30/1",tier:"Fringe",tag:"t-fringe",rat:"Education edge off a troubled start; extreme rail trap."},
+    {r:10,n:5,nm:"Smidgeon",tpn:81,ml:"9/2",tier:"Fade",tag:"t-chaos",rat:"Solid dam, but inside draw & an 'educator' barn."},
+  ];
+  const w = t => Math.max(10, Math.round((t-75)/25*100));
+  const board = document.getElementById('board');
+  field.forEach(h=>{
+    board.insertAdjacentHTML('beforeend',`
+      <div class="row${h.r===1?' top':''}">
+        <div class="rank">${h.r}</div>
+        ${saddle(h.n)}
+        <div class="horse"><div class="nm">${h.nm}</div><div class="rat">${h.rat}</div></div>
+        <div class="tpn">
+          <div class="top-line"><span>TPN</span><span class="num">${h.tpn}</span></div>
+          <div class="tpnbar"><i data-w="${w(h.tpn)}"></i></div>
+        </div>
+        <div class="meta-col"><div class="ml">${h.ml}</div><span class="tag ${h.tag}">${h.tier}</span></div>
+      </div>`);
+  });
+
+  // top-4 detail cards
+  const details = [
+    {n:7,nm:"Epic Fashionista",ml:"5/2",fair:"2/1",ov:"Fair",sire:"Epicenter",dam:"More Than Ready",obs:"$450k",
+     trn:"Casse, Mark E (9%)",jky:"F. Arrieta (15%)",combo:"Cold",pace:"Need-the-Lead · Vulnerable Speed",
+     wk:"Solid gate work 03Jun CD 3f",angles:["Tier-1 Sire +10","Breeze-Up Fitness +5","Clear Air Bias +4"],calc:"Base 75 + 27 − 3 = <b>99</b> → Norm <b>100</b>"},
+    {n:6,nm:"Peace Mission",ml:"8/1",fair:"4/1",ov:"Overlay",sire:"Corniche",dam:"Point of Entry",obs:"$115k",
+     trn:"Casse, Mark E (9%)",jky:"A. Concepcion (9%)",combo:"Cold",pace:"Need-the-Lead · Vulnerable Speed",
+     wk:"Gate work 15May Kee 3f",angles:["Tier-1 Sire +10","Elite Dam Production +12","Clear Air Bias +4"],calc:"Base 75 + 26 − 3 = <b>98</b> → Norm <b>99</b>"},
+    {n:8,nm:"House Boat Party",ml:"4/1",fair:"4/1",ov:"Fair",sire:"Flightline",dam:"American Pharoah",obs:"Unraced",
+     trn:"Lynch, Brian A (33%)",jky:"F. Geroux (16%)",combo:"Hot",pace:"Need-the-Lead · Vulnerable Speed",
+     wk:"Aggressive gate pattern (06Jun & 31May CD 4f)",angles:["Tier-1 Sire +10","Senders Barn Intent +5","Clear Air Bias +4"],calc:"Base 75 + 19 − 0 = <b>94</b> → Norm <b>95</b>"},
+    {n:9,nm:"Smoke",ml:"8/1",fair:"5/1",ov:"Overlay",sire:"—",dam:"—",obs:"2 starts · TS Speed 79",
+     trn:"Walsh, Brendan P (13%)",jky:"D. Cannon (6%)",combo:"Cold",pace:"Tactical Stalker · Garden Spot / Survivor",
+     wk:"Steady maintenance, 05Jun CD 4f 49.0",angles:["💣 Chaos Survivor","🚀 Blue Sky","Blinkers ON +4","Massive Class Capacity Edge"],calc:"Base 65 + 33 − 4 = <b>94</b> (Promoted) → Norm <b>95</b>"},
+  ];
+  const cards = document.getElementById('cards');
+  details.forEach(d=>{
+    const angles = d.angles.map(a=>`<span class="angle">${a}</span>`).join('');
+    cards.insertAdjacentHTML('beforeend',`
+      <div class="hcard">
+        <div class="hh">${saddle(d.n)}<div class="nm">${d.nm}</div>
+          <div class="od"><b>${d.ml}</b><span>ML · Fair ${d.fair}</span></div></div>
+        <dl class="field">
+          <dt>Pedigree</dt><dd>${d.sire!=="—"?`${d.sire} × ${d.dam}`:"Experienced runner"} · ${d.obs}</dd>
+          <dt>Status</dt><dd>${d.ov}</dd>
+          <dt>Trainer</dt><dd>${d.trn}</dd>
+          <dt>Jockey</dt><dd>${d.jky} · Combo ${d.combo}</dd>
+          <dt>Pace</dt><dd>${d.pace}</dd>
+          <dt>Works</dt><dd>${d.wk}</dd>
+        </dl>
+        <div class="angles">${angles}</div>
+        <div class="tpncalc">TPN: ${d.calc}</div>
+      </div>`);
+  });
+
+  // animate bars
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bars = document.querySelectorAll('.tpnbar i');
+  function fill(){bars.forEach(b=>b.style.width=b.dataset.w+'%');}
+  if(reduce){fill();}else{requestAnimationFrame(()=>setTimeout(fill,200));}
+</script>
+</body>
+</html>
