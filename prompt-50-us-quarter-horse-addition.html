@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrackSmart AI — Quick Start Guide · Prompt 50 US Quarter Horse Addition</title>
+<meta name="description" content="Turn Google Gemini into a professional-grade Quarter Horse handicapping analyst with the TrackSmart AI Prompt 50 US Quarter Horse Addition engine. Your step-by-step quick start guide.">
+<link rel="canonical" href="https://start.tracksmartracing.com/prompt-50-quarter-horse.html">
+<meta property="og:title" content="TrackSmart AI — The Only AI That Thinks Like a Handicapper">
+<meta property="og:description" content="Quick Start Guide for the Prompt 50 US Quarter Horse Addition engine. Turn Google Gemini into a professional-grade Quarter Horse racing analyst from standard Quarter Horse past performances.">
+<meta property="og:image" content="https://start.tracksmartracing.com/og-prompt-50-quarter-horse.png">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://start.tracksmartracing.com/prompt-50-quarter-horse.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--
+  NOTE FOR DAVID:
+  This page follows the brand tokens + conventions from the Project Handoff Brief
+  (colors, fonts, single-file flat-repo pattern, working copy button).
+  Two things I could NOT reproduce exactly because I don't have the binary assets:
+    1. Fonts are loaded from Google Fonts CDN instead of base64-embedded woff2.
+       Swap in your embedded @font-face blocks from another page's <style> if you
+       want this fully offline/self-contained like the rest of the repo.
+    2. The hero "wireframe horse" is a placeholder inline SVG, not the real
+       glowing wireframe webp art. Drop in the actual asset (same technique used
+       on other pages — base64 background-image or <img>) to match exactly.
+  Everything else (palette, structure, copy pattern, button behavior) mirrors
+  prompt-60-intl-lite.html / prompt-60-sky-racing.html.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0d2033;
+    --border:#1b3b54;
+    --cyan:#28d6f5;
+    --cyan-bright:#5ce8ff;
+    --cyan-2:#46c6ff;
+    --ink:#eef6fb;
+    --muted:#9fbed2;
+    --faint:#6f93aa;
+    --amber:#ffb454;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 560px at 12% -8%, rgba(40,214,245,0.10), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(70,198,255,0.07), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  code,.mono,.cmd-box pre,.cmd-box .cmd-head .label,.copy-btn,.tip code{
+    font-family:'JetBrains Mono',monospace;
+  }
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 24px;border-bottom:1px solid var(--border);
+    background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);
+    max-width:100%;
+  }
+  header.top .inner{max-width:880px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.2px;}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a{
+    font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;
+  }
+  header.top nav a:hover{color:var(--cyan-bright);}
+
+  .hero{
+    position:relative;text-align:center;padding:60px 24px 46px;
+    border-bottom:1px solid var(--border);overflow:hidden;
+  }
+  .hero .horse-art{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:640px;max-width:140%;opacity:0.10;pointer-events:none;
+  }
+  .hero .content{position:relative;z-index:1;}
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--cyan-bright);background:rgba(40,214,245,0.08);
+    border:1px solid rgba(40,214,245,0.35);border-radius:999px;
+    padding:6px 14px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:2.3rem;line-height:1.15;margin:0 0 18px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{max-width:620px;margin:0 auto;color:var(--muted);font-size:1.02rem;}
+  .hero .badge{
+    display:inline-block;margin-top:26px;font-size:0.75rem;letter-spacing:1px;
+    text-transform:uppercase;color:#04101b;
+    background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    padding:8px 16px;border-radius:8px;font-weight:700;font-family:'Sora',sans-serif;
+  }
+  .hero .tagline{margin-top:16px;font-style:italic;color:var(--faint);font-size:0.95rem;}
+
+  section.intro{padding:36px 24px 8px;}
+  section.intro .welcome{
+    background:var(--panel);border:1px solid var(--border);border-radius:14px;
+    padding:22px 24px;color:var(--muted);
+  }
+  section.intro .welcome strong{color:var(--ink);}
+
+  .part-label{
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);
+    font-weight:700;margin:52px 0 4px;font-family:'Sora',sans-serif;
+  }
+  .part-label span{color:var(--faint);font-weight:400;margin-left:8px;text-transform:none;letter-spacing:0;}
+  h2.part-title{font-size:1.5rem;margin:6px 0 10px;}
+  .part-desc{color:var(--muted);margin-bottom:26px;max-width:640px;}
+
+  .steps{display:flex;flex-direction:column;gap:14px;}
+  .step{
+    display:flex;gap:16px;background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:18px 20px;
+  }
+  .step .num{
+    flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+    background:rgba(40,214,245,0.10);border:1px solid rgba(40,214,245,0.4);
+    color:var(--cyan-bright);display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:0.92rem;font-family:'Sora',sans-serif;
+  }
+  .step h4{margin:0 0 6px;font-size:1.02rem;color:var(--ink);}
+  .step p{margin:0;color:var(--muted);font-size:0.94rem;}
+  .step .tag{
+    display:inline-block;margin-top:10px;font-size:0.75rem;color:var(--cyan-bright);
+    background:rgba(40,214,245,0.08);border:1px solid rgba(40,214,245,0.3);
+    border-radius:6px;padding:3px 9px;font-family:'JetBrains Mono',monospace;
+  }
+
+  #command{scroll-margin-top:80px;}
+  .cmd-box{
+    background:#03141f;border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  }
+  .cmd-box .cmd-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 18px;border-bottom:1px solid var(--border);background:var(--panel-2);
+  }
+  .cmd-box .cmd-head .label{font-size:0.8rem;color:var(--faint);}
+  .copy-btn{
+    background:linear-gradient(90deg,var(--cyan),var(--cyan-2));color:#04101b;border:none;
+    border-radius:7px;padding:8px 14px;font-weight:700;font-size:0.8rem;cursor:pointer;
+  }
+  .copy-btn:hover{filter:brightness(1.08);}
+  .copy-btn.copied{background:linear-gradient(90deg,#3ee0a8,#28d6f5);}
+  .cmd-box pre{
+    margin:0;padding:20px;white-space:pre-wrap;word-wrap:break-word;
+    font-size:0.85rem;color:#dcecf5;max-height:520px;overflow-y:auto;
+  }
+  .cmd-box pre .hl{color:var(--cyan-bright);font-weight:700;}
+  .cmd-box pre .mod{color:var(--amber);font-weight:700;}
+
+  .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:640px){.tips-grid{grid-template-columns:1fr;}}
+  .tip{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+  .tip h4{margin:0 0 8px;font-size:0.98rem;color:var(--cyan-bright);}
+  .tip p{margin:0;color:var(--muted);font-size:0.92rem;}
+  .tip code{background:rgba(40,214,245,0.08);padding:1px 5px;border-radius:4px;font-size:0.85em;}
+
+  footer{margin-top:64px;border-top:1px solid var(--border);padding:40px 24px 32px;text-align:center;}
+  footer .thanks h3{margin:0 0 10px;font-size:1.2rem;font-family:'Sora',sans-serif;}
+  footer .thanks p{color:var(--muted);max-width:520px;margin:0 auto 28px;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .fine{color:var(--faint);font-size:0.78rem;letter-spacing:0.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </div>
+    <nav>
+      <a href="https://start.tracksmartracing.com/">← All Guides</a>
+      <a href="#command">Jump to the Command</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <svg class="horse-art" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#28d6f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M70 210 L75 150 L60 120 L75 90 L100 70 L140 65 L175 75 L210 60 L250 55 L280 70 L300 95 L295 120 L270 130 L250 150 L255 210"/>
+      <path d="M100 70 L95 40 L115 35 L130 55"/>
+      <path d="M70 210 L60 235 M85 210 L78 235 M250 150 L245 235 M270 130 L262 235"/>
+      <path d="M280 70 L340 55 L365 60 L370 75"/>
+      <circle cx="118" cy="45" r="2.4" fill="#5ce8ff"/>
+      <path d="M175 75 L172 100 M210 60 L206 88"/>
+    </g>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">Quick Start Guide</span>
+    <h1>Master Your Race Card in Minutes</h1>
+    <p>Everything you need to turn Google Gemini into a professional-grade Quarter Horse handicapping analyst — powered by the TrackSmart AI Prompt 50 US Quarter Horse Addition, using any standard Quarter Horse past-performance data.</p>
+    <div class="badge">Model · Prompt 50 · US Quarter Horse Addition</div>
+    <p class="tagline">"The Only AI that Thinks Like a Handicapper."</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="intro">
+    <div class="welcome">
+      <p><strong>Welcome to the TrackSmart AI community.</strong></p>
+      <p>Thank you for your purchase. You now have access to Prompt 50 (v2.1), our dedicated US Quarter Horse engine — built to turn Google Gemini into a professional-grade sprint-racing analyst. Unlike our Thoroughbred engines, Prompt 50 is engineered from the ground up around Quarter Horse realities: gate speed, short-comment forensics, and earnings-based class — with zero borrowed Thoroughbred pace logic. This guide walks you through the simple, step-by-step process to generate a complete race-card analysis. Let's get started.</p>
+    </div>
+  </section>
+
+  <div class="part-label">Part 1 <span>Before You Begin</span></div>
+  <h2 class="part-title">What You'll Need</h2>
+  <p class="part-desc">Have these five things ready and the whole process takes just a couple of minutes.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div><h4>Any Device</h4><p>Works on any computer, tablet, or phone that can reach the Gemini website and upload files.</p></div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div><h4>Google Gemini Advanced Subscription</h4><p>An active Gemini Advanced subscription is required — the advanced model has the processing power for large data documents and the prompt's multi-step logic.</p></div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div><h4>The TrackSmart AI Prompt 50 — US Quarter Horse Addition</h4><p>Keep your engine prompt handy — you'll paste it into the chat (it's the core AI logic).</p></div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div><h4>Your Quarter Horse PP (the only upload)</h4><p>The AI reads any standard US Quarter Horse past-performance PDF for the meeting you want to analyze — from your ADW, track program, or any standard PP provider.</p></div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div><h4>The Master Command</h4><p>The text you copy and paste into Gemini to run the analysis — provided in full below.</p></div>
+    </div>
+  </div>
+
+  <div class="part-label">Part 2 <span>Run The Analysis</span></div>
+  <h2 class="part-title">Generating Your Race Analysis</h2>
+  <p class="part-desc">Paste your engine prompt, upload the one PP file, then give Gemini the Master Command.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h4>Open Gemini &amp; Upload Your Files</h4>
+        <p>Go to <strong>gemini.google.com</strong> on the <strong>Advanced / Pro</strong> model and start a <strong>new chat</strong>. Paste in your <strong>TrackSmart AI Prompt 50 — US Quarter Horse Addition</strong> prompt, then upload your <strong>single</strong> data file:</p>
+        <span class="tag">Your one upload · Data — Standard US Quarter Horse PP (any provider)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h4>Customize &amp; Paste the Master Command</h4>
+        <p>With your prompt pasted and the PP uploaded, paste the Master Command (below) into the chat box.</p>
+        <p style="margin-top:10px;"><strong>Before you hit Enter:</strong> change <strong>"X" to the number of races</strong>, note any <strong>scratches or jockey changes</strong>, and set today's <strong>Track Condition</strong> to match (fast, sloppy, muddy). <em>Q4 is Live Odds/Tote — to use it, run one race at a time; otherwise leave "Pass on Q4."</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="part-label">Part 2 <span>Copy · Paste · Run</span></div>
+  <h2 class="part-title" id="command">The Master Command</h2>
+  <p class="part-desc">Hit <strong>Copy command</strong>, paste it into Gemini exactly as is, then <strong>edit only the first line</strong> (set <strong>X</strong> = number of races; note scratches/jockey changes and today's Track Condition).</p>
+
+  <div class="cmd-box">
+    <div class="cmd-head">
+      <span class="label">prompt_50_us_qh_addition — master command</span>
+      <button class="copy-btn" id="copyBtn">Copy command</button>
+    </div>
+    <pre id="cmdText">Prepare race analysis reports for races 1 through <span class="hl">X</span>. No scratches or jockey changes. Track is fast. Pass on Q4.
+
+CRITICAL EXECUTION ORDER FOR PROMPT 50 US QUARTER HORSE ADDITION (v2.1):
+
+1. <span class="mod">FORCE DATA EXTRACTION (THE "OCR ANCHOR &amp; GAP JUMP" PROTOCOL):</span> Isolate each horse's block. Extract the baseline from the *first valid row* of past performance lines. You MUST execute the "Interrupter &amp; Life Count" Audit—look at the "Life" starts in the header, and force the reader to jump past any non-race text rows (Trainer, Claimed, Workouts) until the number of extracted race lines matches the Life count. Extract the last 4 Start (`ST`) positions and short comments for the Gate Matrix.
+
+2. <span class="mod">ENFORCE THE IMMUNITY HIERARCHY (THE "SPEED BLINDNESS" PROTOCOL):</span> Before penalizing low Speed Indexes, evaluate the 4 Levels of Immunity. Execute the "Ghost Protocol": if a short comment indicates trouble (`bpd`, `stb`, `brk slw`, `pinballed`), that race is granted IMMUNITY and the poor SI ceases to exist. Protect Alpha Barns (20%+ win rate) with the Elite Connection Floor (cannot rank lower than #5), and waive last-out fading margins for Trial Drops.
+
+3. <span class="mod">EXECUTE THE GATE MATRIX &amp; WIND PHYSICS:</span> Calculate the Clean Start Average (CSTA) using the last 4 races (discarding trouble lines unless chronic). Apply Bonuses/Penalties for Explosive Breakers (≤ 2.5) vs. Chronic Sluggards (≥ 6.0). Apply strict Wind Normalization (+6 for Headwind Hero `hw` near Par, -5 for Wind Assisted `tw` peaks). Compare the effective SI to Today's Par. CRITICAL: Quarter Horses lack Thoroughbred pace indicators. DO NOT hallucinate E1/E2 or pacing fractions.
+
+4. <span class="mod">RUN CLASS MATRIX &amp; VALUE PROMOTION (THE CHAOS SURVIVOR):</span> Evaluate Circuit Tier Drops (Tier 1/2 invading Tier 3), Trial Drops to Overnights, and the Earnings Power Gauge (AEPS). Calculate the Base TPN (75) + Modifiers. If a horse ranked #5 or #6 holds a Normalized TPN ≥ 80, ML Odds ≥ 10-1, and a clean break history, execute the Value Promotion Trigger (VPT) and force them into Rank #4 as a 💣 CHAOS SURVIVOR.
+
+5. <span class="mod">GENERATE REPORT (Bimodal Output &amp; Normalization):</span> Proceed with the full TrackSmart AI Prompt 50 (v2.1) analysis. Print the mandatory Pre-Flight Youth Failsafe Audit. You MUST output full 10-line deep-dive profiles ONLY for the Top 4 Ranked Horses. Use a Single-Line Scrub format for Ranks 5 and below. Apply TPN Normalization to 100 for the final output table.
+
+⚑ AI MUST NOT INCLUDE SOURCES, CITES, OR EXTERNAL LINKS IN THE REPORT OUTPUT.</pre>
+  </div>
+
+  <p style="color:var(--muted);margin-top:20px;">Press <strong>Enter</strong> — Gemini runs the Gate Matrix, normalizes every TPN to 100, and flags your Top 4 deep-dives plus any 💣 Chaos Survivors.</p>
+
+  <div class="part-label" style="margin-top:60px;">Pro <span>Get The Most From It</span></div>
+  <h2 class="part-title">Tips for Best Results</h2>
+  <div class="tips-grid">
+    <div class="tip">
+      <h4>Update Scratches &amp; Jockey Changes</h4>
+      <p>Quarter Horse races are decided at the gate, so a late jockey change matters more here than in route racing. Always update the first line before you hit Enter.</p>
+    </div>
+    <div class="tip">
+      <h4>Set the Track Condition Accurately</h4>
+      <p>Fast, sloppy, or muddy changes Today's Par — and Par is what every Speed Index in the Gate Matrix is measured against.</p>
+    </div>
+    <div class="tip">
+      <h4>Watch for the Chaos Survivor</h4>
+      <p>A 💣 next to a #4 ranking means the Value Promotion Trigger fired — a live longshot with a clean break history and a Normalized TPN of 80+.</p>
+    </div>
+    <div class="tip">
+      <h4>No Pace Figures — By Design</h4>
+      <p>Prompt 50 deliberately omits E1/E2 pace fractions — QH sprints have no far turn to make them meaningful. If the AI invents one, that's a bug, not a feature.</p>
+    </div>
+    <div class="tip">
+      <h4>Managing Large Cards</h4>
+      <p>Set <code>X</code> to the number of races you want. For very large cards, run a batch (e.g. 1 through 8), then start a fresh chat, re-upload, and set the next batch.</p>
+    </div>
+    <div class="tip">
+      <h4>One Card per Chat</h4>
+      <p>Always start a brand-new Gemini chat for a different track or day to avoid cross-contamination of track biases.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="thanks">
+      <h3>Thank you for joining TrackSmart AI.</h3>
+      <p>We're confident Prompt 50 will give you a powerful new edge handicapping the gate. Saddle up — and good luck at the windows.</p>
+    </div>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="fine">Prompt 50 · US Quarter Horse Addition · Quick Start</div>
+    <div class="copyright">© 2026 TrackSmart AI · <a href="https://www.tracksmartracing.com">tracksmartracing.com</a></div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var el = document.getElementById('cmdText');
+    var text = el.innerText;
+    var btn = this;
+    function done(){
+      var original = 'Copy command';
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+    }
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+    } else {
+      fallbackCopy(text, done);
+    }
+    function fallbackCopy(text, cb){
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta);
+      cb();
+    }
+  });
+</script>
+
+</body>
+</html>
